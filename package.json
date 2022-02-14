@@ -1,7 +1,7 @@
 {
-  "name": "repldb",
+  "name": "repl.db",
   "version": "0.1.0-alpha",
-  "description": "ReplDB is an easy-to-use and enhanced client for Replit databases.",
+  "description": "Repl.db is an easy-to-use and enhanced client for Replit databases.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
