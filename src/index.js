@@ -60,6 +60,7 @@ class ReplitDatabase {
 
 	/**
 	 * Check if the database has a key ('has' alias)
+	 * @see #has
 	 * @param {String} key Key's name
 	 * @async
 	 * @returns {Promise<Boolean|Error>}
@@ -100,6 +101,7 @@ class ReplitDatabase {
 
 	/**
 	 * Set a key ('set' alias)
+	 * @see #set
 	 * @param {String} key Key's name
 	 * @param {any} [value] Key's value
 	 * @async
@@ -111,6 +113,7 @@ class ReplitDatabase {
 
 	/**
 	 * Set a key ('set' alias)
+	 * @see #set
 	 * @param {String} key Key's name
 	 * @param {any} [value] Key's value
 	 * @async
@@ -125,7 +128,7 @@ class ReplitDatabase {
 	 * @param {String} key Key's name
 	 * @param {any} value Key's updated value
 	 * @async
-	 * @returns {Promise<(String|any)|Error>}
+	 * @returns {Promise<any|Error>}
 	 */
 	async update(key, value) {
 		return new Promise(async(resolve, reject) => {
@@ -184,10 +187,11 @@ class ReplitDatabase {
 
 	/**
 	 * Edit a key value ('update' alias)
+	 * @see #update
 	 * @param {String} key Key's name
 	 * @param {any} value Key's updated value
 	 * @async
-	 * @returns {Promise<(String|any)|Error>}
+	 * @returns {Promise<any|Error>}
 	 */
 	async edit(key, value) {
 		return this.update(key, value);
@@ -234,6 +238,7 @@ class ReplitDatabase {
 
 	/**
 	 * Remove a key ('delete' alias)
+	 * @see #delete
 	 * @param {String} key Key's name
 	 * @async
 	 * @returns {Promise<String|Error>}
@@ -258,6 +263,7 @@ class ReplitDatabase {
 
 	/**
 	 * List all keys (or keys that starts with a custom prefix, 'list' alias)
+	 * @see #list
 	 * @param {String} [prefix] Prefix
 	 * @async
 	 * @returns {Promise<String[]|Error>}
@@ -346,6 +352,7 @@ class ReplitDatabase {
 
 	/**
 	 * Remove all keys (or keys that starts with a custom prefix, or specified keys in Array, 'deleteAll' alias)
+	 * @see #deleteAll
 	 * @param {String|Array} prefixOrList Prefix or keys' names Array
 	 * @async
 	 * @returns {Promise<String[]|Error>}
