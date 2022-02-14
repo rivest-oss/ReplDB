@@ -1,0 +1,27 @@
+{
+  "name": "repldb",
+  "version": "0.1.0-alpha",
+  "description": "ReplDB is an easy-to-use and enhanced client for Replit databases.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rivest-oss/repldb.git"
+  },
+  "keywords": [
+    "replit",
+    "database",
+    "replit-database"
+  ],
+  "author": "rivest-oss",
+  "license": "CC-BY-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/rivest-oss/repldb/issues"
+  },
+  "homepage": "https://github.com/rivest-oss/repldb#readme",
+  "dependencies": {
+    "axios": "^0.26.0"
+  }
+}
