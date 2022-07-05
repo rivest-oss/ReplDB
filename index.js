@@ -25,7 +25,7 @@ class ReplitDatabase {
 	 * @returns {Promise<any|Error>}
 	 */
 	get(key) {
-		return new Promise(async(resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			if(!key) return reject(new Error(`You must set a key name.`));
 			if(typeof key !== `string`) return reject(new Error(`Key's name must be a String, nor ${typeof key}.`));
 
@@ -45,7 +45,7 @@ class ReplitDatabase {
 	 * @returns {Promise<Boolean|Error>}
 	 */
 	has(key) {
-		return new Promise(async(resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			this.get(key).then(value => {
 				if(value === undefined) return resolve(false);
 				return resolve(true);
@@ -72,7 +72,7 @@ class ReplitDatabase {
 	 * @returns {Promise<Boolean|Error>}
 	 */
 	empty(key) {
-		return new Promise(async(resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			return this.has(key).then(bool => resolve(bool === false)).catch(reject);
 		});
 	}
@@ -84,11 +84,11 @@ class ReplitDatabase {
 	 * @returns {Promise<String|Error>}
 	 */
 	set(key, value) {
-		return new Promise(async(resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			if(!key) return reject(new Error(`You must set a key name.`));
 			if(typeof key !== `string`) return reject(new Error(`Key's name must be a String, nor ${typeof key}.`));
 			
-			return axios.post(this.baseURL, `${encodeURIComponent(key)}=${encodeURIComponent(JSON.stringify(value))}`).then(async() => resolve(key)).catch(reject);
+			return axios.post(this.baseURL, `${encodeURIComponent(key)}=${encodeURIComponent(JSON.stringify(value))}`).then(() => resolve(key)).catch(reject);
 		});
 	}
 
@@ -121,7 +121,7 @@ class ReplitDatabase {
 	 * @returns {Promise<any|Error>}
 	 */
 	update(key, value) {
-		return new Promise(async(resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			if(!key) return reject(new Error(`You must set a key name.`));
 			if(typeof key !== `string`) return reject(new Error(`Key's name must be a String, nor ${typeof key}.`));
 	
@@ -193,7 +193,7 @@ class ReplitDatabase {
 	 * @returns {Promise<String|Error>}
 	 */
 	patch(key, value) {
-		return new Promise(async(resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			if(!key) return reject(new Error(`You must set a key name.`));
 			if(typeof key !== `string`) return reject(new Error(`Key's name must be a String, nor ${typeof key}.`));
 	
@@ -215,11 +215,11 @@ class ReplitDatabase {
 	 * @returns {Promise<String|Error>}
 	 */
 	delete(key) {
-		return new Promise(async(resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			if(!key) return reject(new Error(`You must set a key name.`));
 			if(typeof key !== `string`) return reject(new Error(`Key's name must be a String, nor ${typeof key}.`));
 			
-			return axios.delete(`${this.baseURL}/${encodeURIComponent(key)}`).then(async() => resolve(key)).catch(reject);
+			return axios.delete(`${this.baseURL}/${encodeURIComponent(key)}`).then(() => resolve(key)).catch(reject);
 		});
 	}
 
@@ -239,7 +239,7 @@ class ReplitDatabase {
 	 * @returns {Promise<String[]|Error>}
 	 */
 	list(prefix=``) {
-		return new Promise(async(resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			if(typeof prefix !== `string`) return reject(new Error(`Prefix must be a String, nor ${typeof prefix}.`));
 
 			return axios.get(`${this.baseURL}?prefix=${encodeURIComponent(prefix)}`).then(res => resolve(res.data.split(`\n`))).catch(reject);
@@ -262,12 +262,12 @@ class ReplitDatabase {
 	 * @returns {Promise<any[]|Error>}
 	 */
 	getAll(prefix=``) {
-		return new Promise(async(resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			this.list(prefix).then(keys => {
 				const promises = [];
 
 				keys.forEach(key => {
-					promises.push(new Promise(async(resolve, reject) => {
+					promises.push(new Promise((resolve, reject) => {
 						this.get(key).then(value => {
 							return resolve([ key, value ]);
 						}).catch(reject);
@@ -286,11 +286,11 @@ class ReplitDatabase {
 	 * @returns {Promise<any[]|Error>}
 	 */
 	setAll(prefixOrList=``, values) {
-		return new Promise(async(resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			function doSetAll(keys) {
 				const promises = [];
 
-				keys.forEach(async(key, y, z) => {
+				keys.forEach((key, y, z) => {
 					const value = typeof values == `function` ? values(key, y, z) : values;
 					promises.push(this.set(key, value));
 				});
@@ -312,7 +312,7 @@ class ReplitDatabase {
 	 * @returns {Promise<String[]|Error>}
 	 */
 	deleteAll(prefixOrList=``) {
-		return new Promise(async(resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			function doDeleteAll(keys) {
 				const promises = [];
 
