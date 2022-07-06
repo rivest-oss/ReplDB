@@ -1,18 +1,18 @@
 ## About
-`repl.db` is a simple to use and enhanced client for Replit databases.
+`replitdb` is a simple to use and enhanced client for Replit databases.
 
 ## Installation
 **How to install it?**
 
 ```sh-session
-npm install repl.db
+npm install replitdb
 ```
 
 ## Examples of use:
 
 Initialise the database:
 ```js
-const ReplDB = require(`repl.db`),
+const ReplDB = require(`replitdb`),
 	repldb = new ReplDB();
 ```
 
