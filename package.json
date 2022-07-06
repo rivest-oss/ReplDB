@@ -1,6 +1,6 @@
 {
   "name": "replitdb",
-  "version": "0.1.0-alpha",
+  "version": "1.0.0-beta",
   "description": "ReplitDB is an easy-to-use and enhanced client for Replit databases.",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "database",
     "replit-database"
   ],
-  "author": "rivest-oss",
+  "author": "Rivest Osz <rivest-oss@proton.me>",
   "license": "CC-BY-SA-4.0",
   "bugs": {
     "url": "https://github.com/rivest-oss/repldb/issues"
